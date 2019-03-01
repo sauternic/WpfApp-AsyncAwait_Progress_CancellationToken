@@ -33,9 +33,11 @@ namespace WpfApp2
             watch.Start();
                 var basta = new BastaManager();
 
-            //Beide Laufen jetzt Parallel!
+            //Beide Laufen jetzt Parallel asynchron!
             var er1 = basta.LoadSpeakersAsync();
             var er2 = basta.LoadSeesionsAsync();
+
+            MessageBox.Show("Bin zuerst! :)))");
 
             listViewSpeakers.ItemsSource = await er1;
             listViewSessions.ItemsSource = await er2;
