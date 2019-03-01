@@ -8,7 +8,8 @@ namespace WpfApp2
 {
     public class BastaManager
     {
-        public Task<List<string>> LoadSpeakersAsync(IProgress<int> progress = null)
+        public Task<List<string>> LoadSpeakersAsync(CancellationToken token = default(CancellationToken),
+            IProgress<int> progress = null)
         {
             return Task.Run(() =>
             {
@@ -21,6 +22,8 @@ namespace WpfApp2
                     {
                         progress.Report(x * 10);
                     }
+                    if (token.IsCancellationRequested)
+                        return list;
 
                     list.Add("Nicolas " + x.ToString());
                 }

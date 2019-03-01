@@ -18,6 +18,7 @@
         <StackPanel>
             <Button Content="Laden" Click="Button_Click"/>
             <ProgressBar x:Name="progressbar1" Height="30" Margin="10"/>
+            <Button x:Name="cancelbutton1" Height="30" Margin="10" Click="cancelbutton1_Click"/>
         </StackPanel>
         <ListView Grid.Row="1" x:Name="listViewSpeakers"/>
         <ListView Grid.Row="1" Grid.Column="1" x:Name="listViewSessions"/>
