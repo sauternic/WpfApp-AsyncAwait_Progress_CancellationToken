@@ -33,13 +33,15 @@ namespace WpfApp2
             watch.Start();
                 var basta = new BastaManager();
 
-            var er1 = await basta.LoadSpeakersAsync();
-            var er2 = await basta.LoadSeesionsAsync();
+            var er1 = basta.LoadSpeakersAsync();
+            var er2 = basta.LoadSeesionsAsync();
 
+            Task.WaitAll(er1, er2);
+            
             //Task.WaitAll(er1, er2);
 
-            listViewSpeakers.ItemsSource = er1;
-            listViewSessions.ItemsSource = er2;
+            listViewSpeakers.ItemsSource = await er1;
+            listViewSessions.ItemsSource = await er2;
 
             watch.Stop();
 
