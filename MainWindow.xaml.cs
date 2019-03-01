@@ -26,15 +26,21 @@ namespace WpfApp2
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             var watch = new Stopwatch();
 
             watch.Start();
                 var basta = new BastaManager();
 
-                listViewSpeakers.ItemsSource = basta.LoadSpeakers();
-                listViewSessions.ItemsSource = basta.LoadSeesions();
+            var er1 = await basta.LoadSpeakersAsync();
+            var er2 = await basta.LoadSeesionsAsync();
+
+            //Task.WaitAll(er1, er2);
+
+            listViewSpeakers.ItemsSource = er1;
+            listViewSessions.ItemsSource = er2;
+
             watch.Stop();
 
             MessageBox.Show((watch.ElapsedMilliseconds)+ "ms");
