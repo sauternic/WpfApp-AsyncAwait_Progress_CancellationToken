@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace WpfApp2
 {
@@ -27,10 +28,17 @@ namespace WpfApp2
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var basta = new BastaManager();
+            var watch = new Stopwatch();
 
-            listViewSpeakers.ItemsSource = basta.LoadSpeakers();
-            listViewSessions.ItemsSource = basta.LoadSeesions();
+            watch.Start();
+                var basta = new BastaManager();
+
+                listViewSpeakers.ItemsSource = basta.LoadSpeakers();
+                listViewSessions.ItemsSource = basta.LoadSeesions();
+            watch.Stop();
+
+            MessageBox.Show((watch.ElapsedMilliseconds)+ "ms");
+
         }
     }
 }
