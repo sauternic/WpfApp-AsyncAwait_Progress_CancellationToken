@@ -7,6 +7,19 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <Button Content="Laden" Click="Button_Click"/>
+        </StackPanel>
+        <ListView Grid.Row="1" x:Name="listViewSpeakers"/>
+        <ListView Grid.Row="1" Grid.Column="1" x:Name="listViewSessions"/>
+
     </Grid>
 </Window>

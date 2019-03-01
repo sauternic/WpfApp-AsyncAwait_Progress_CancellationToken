@@ -24,5 +24,13 @@ namespace WpfApp2
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var basta = new BastaManager();
+
+            listViewSpeakers.ItemsSource = basta.LoadSpeakers();
+            listViewSessions.ItemsSource = basta.LoadSeesions();
+        }
     }
 }
